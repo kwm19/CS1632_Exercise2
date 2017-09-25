@@ -1,3 +1,7 @@
+// Jonathan Kenneson - jkenneson
+// Kyle Monto - kwm19
+//Real Name - Github account
+
 import java.util.*;
 
 public class LaboonCoin {
