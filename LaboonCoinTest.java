@@ -107,6 +107,7 @@ public class LaboonCoinTest {
     }
 
     // Testing edge case of Zero (boundary value of most common equivalance class)
+    // using hash that does meet the difficulty requirement
     // Testing method ValidHash()
     @Test
     public void testValidHashZero() {
@@ -116,6 +117,9 @@ public class LaboonCoinTest {
          assertTrue(result);
     }
 
+    // Testing happy path with most common equivalance class - difficulty of 3
+    // using hash that does not meet the difficulty requirement
+    // Testing method ValidHash
     @Test
     public void testValidHashThree() {
          int hashToCheck = 269138035; //0x100ab873
