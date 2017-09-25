@@ -81,6 +81,9 @@ public class LaboonCoin {
 
     public int hash(String data) {
 	// TODO
+     if(data == null || data.equals("\0")){
+          data = "";
+     }
      // 1. Convert a String into a sequence of characters
      char[] charArray = data.toCharArray();
      // 2. Initialize a starting value, n, of 10000000 (10 million)
@@ -112,17 +115,18 @@ public class LaboonCoin {
 
     public boolean validHash(int difficulty, int hash) {
 	// TODO
-     boolean valid = false;
-     if(difficulty > 0 && difficulty < 8){
+     boolean valid = true;
+     if(difficulty >= 0 && difficulty < 8){
           String checkHash = String.format("%08x", hash);
           char[] checkCharArray = checkHash.toCharArray();
           for(int i = 0; i < difficulty; i++){
-               if(checkCharArray[(difficulty - 1) - i] == '0'){
-                    valid = true;
-               } else {
+               if(checkCharArray[(difficulty - 1) - i] != '0'){
                     return false;
                }
           }
+     }
+     else {
+          valid = false;
      }
 	return valid;
     }
@@ -214,7 +218,7 @@ public class LaboonCoin {
      * This corresponds to how many 0's must be at the beginning of a
      * hash for it to be valid and for the block to be mined.
      * If this cannot be read or parsed, it will default to a difficulty
-     * of 1.
+     * of 3.
      * @param args[] - command line arguments
      */
 
